@@ -1,9 +1,7 @@
 #!/bin/sh
 # Check /sys/class/net/ for iterfaces
 #
-server="192.168.1.54"
-port="2003"
-interface="eth0 eth1 ath0 ath1 br0 tun1"
+interface="eth0 eth1 ath0 ath1 br0"
 while true; do
      date="$( date +%s )"
      date
@@ -13,8 +11,9 @@ while true; do
 		tx=0
 		rx=`cat /sys/class/net/$i/statistics/rx_bytes`
 		tx=`cat /sys/class/net/$i/statistics/tx_bytes`
-		echo "ddwrt.perf.network.$i.receive.bytes $rx $date" | nc $server $port ;
-		echo "ddwrt.perf.network.$i.transmit.bytes $tx $date" | nc $server $port ;
+		/jffs/stats/sendInflux.sh "bandwidth,interface=$i,direction=rx bytes=$rx" 
+		/jffs/stats/sendInflux.sh "bandwidth,interface=$i,direction=tx bytes=$tx" 
+        
 	done
      sleep 20
 done

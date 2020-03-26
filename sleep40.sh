@@ -1,11 +1,11 @@
 #!/bin/sh
 sleep 40
-/jffs/checkConnections.sh &
-/jffs/pingGateway.sh &
-/jffs/pingGoogle.sh &
-/jffs/pingLab.sh &
-/jffs/checkLoad.sh &
-/jffs/checkCPUTemp.sh &
-/jffs/checkMem.sh &
-/jffs/checkCPU.sh &
-/jffs/checkWirelessClients.sh &
+/jffs/stats/checkConnections.sh &
+/jffs/stats/pingGateway.sh &
+/jffs/stats/pingGoogle.sh &
+/jffs/stats/pingLab.sh &
+/jffs/stats/checkLoad.sh &
+/jffs/stats/checkCPUTemp.sh &
+/jffs/stats/checkMem.sh &
+/jffs/stats/checkCPU.sh &
+/jffs/stats/checkWirelessClients.sh &
